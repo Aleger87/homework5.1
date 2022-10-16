@@ -1,6 +1,6 @@
-import com.sun.jdi.connect.Transport;
 import transport.Buses;
 import transport.Cars;
+import transport.Transport;
 import transport.Trucks;
 
 public class Main {
@@ -34,6 +34,18 @@ public class Main {
         Trucks luidor = new Trucks("Луидор", null, 6);
         transport.addCars(luidor);
 
+        for (int i = 0; i < transport.getCars().length; i++) {
+            System.out.println(transport.getCars()[i].getBrand());
+            printMetod(transport.getCars()[i]);
+        }
 
+    }
+
+    private static void printMetod(Transport cars) {
+        cars.startMovement();
+        cars.finishMovement();
+        cars.lapTime();
+        cars.maxSpeed();
+        cars.pitStop();
     }
 }

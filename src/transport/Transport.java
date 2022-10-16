@@ -2,7 +2,7 @@ package transport;
 
 import java.util.Arrays;
 
-public abstract class Transport {
+public abstract class Transport implements Competing {
     private String brand;
     private String model;
     private float engineVolume;
