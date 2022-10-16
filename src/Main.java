@@ -1,7 +1,4 @@
-import transport.Buses;
-import transport.Cars;
-import transport.Transport;
-import transport.Trucks;
+import transport.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,8 +33,11 @@ public class Main {
 
         for (int i = 0; i < transport.getCars().length; i++) {
             System.out.println(transport.getCars()[i].getBrand());
-            printMetod(transport.getCars()[i]);
+            //printMetod(transport.getCars()[i]);
         }
+
+        DriverB alex = new DriverB("Алексей Алексеевич Алексеев", true, 5, bmw);
+        System.out.println("Водитель " + alex.getFullName() + " управляете автомобилем " + alex.getCar().getBrand()+ " и будет участвовать в заезде");
 
     }
 
