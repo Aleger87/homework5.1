@@ -1,7 +1,5 @@
 package transport;
 
-import java.util.Arrays;
-
 public abstract class Transport implements Competing {
     private String brand;
     private String model;
@@ -11,13 +9,11 @@ public abstract class Transport implements Competing {
         if (brand == null || brand.isEmpty() || brand.isBlank()){
             this.brand = "defoult";
         } else {
-
             this.brand = brand;
         }if (model == null || model.isEmpty() || model.isBlank()){
             this.model = "defoult";
         } else {
-
-            this.model = brand;
+            this.model = model;
         }
         if (engineVolume < 0) {
             this.engineVolume = Math.abs(engineVolume);
@@ -41,5 +37,14 @@ public abstract class Transport implements Competing {
 
     public float getEngineVolume() {
         return engineVolume;
+    }
+
+    @Override
+    public String toString() {
+        return "Transport{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", engineVolume=" + engineVolume +
+                '}';
     }
 }

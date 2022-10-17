@@ -1,19 +1,8 @@
 package transport;
 
-import java.util.Arrays;
-
-public class Cars extends Transport  implements Competing{
-    private Transport[] cars;
-
-    public Cars(String brand, String model, float engineVolume) {
+public class Truck extends Transport implements Competing{
+    public Truck(String brand, String model, float engineVolume) {
         super(brand, model, engineVolume);
-        cars = new Transport[0];
-    }
-
-
-    public void addCars (Transport car){
-        this.cars = Arrays.copyOf(getCars(),  getCars().length+1);
-        this.cars[this.cars.length-1] = car;
     }
 
     @Override
@@ -39,9 +28,5 @@ public class Cars extends Transport  implements Competing{
     @Override
     public void maxSpeed() {
         System.out.println("Лучшая скорость");
-    }
-
-    public Transport[] getCars() {
-        return cars;
     }
 }

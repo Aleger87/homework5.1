@@ -2,50 +2,51 @@ import transport.*;
 
 public class Main {
     public static void main(String[] args) {
+        Car audi = new Car("Audi", "A8", 3.5f);
+        audi.startMovement();
+        audi.finishMovement();
+        System.out.println(audi.getBrand());
+        System.out.println(audi.getModel());
+        System.out.println(audi.getEngineVolume());
+        System.out.println(audi.toString());
 
-        Cars transport = new Cars(null, null, 8);
-        Cars audi = new Cars("Audi", "A8", 3.0f);
-        transport.addCars(audi);
-        Cars bmw = new Cars("BMW", "Z4", 3.0f);
-        transport.addCars(bmw);
-        Cars renault = new Cars("Renault", "Logan", 1.6f);
-        transport.addCars(renault);
-        Cars mercedes = new Cars("Mercedes", "E200", 3.0f);
-        transport.addCars(mercedes);
 
-        Buses lias = new Buses("Лиаз", null, 3);
-        transport.addCars(lias);
-        Buses nifaz = new Buses("Нифаз", null, 3);
-        transport.addCars(nifaz);
-        Buses kamaz = new Buses("Камаз", "А355", 4);
-        transport.addCars(kamaz);
-        Buses paz  = new Buses("ПАЗ", null, 3);
-        transport.addCars(paz);
+        Car bmw = new Car("BMW", "Z4", 3.5f);
 
-        Trucks man = new Trucks("Ман", null, 6);
-        transport.addCars(man);
-        Trucks scania = new Trucks("Скания", null, 6);
-        transport.addCars(scania);
-        Trucks isyzy = new Trucks("Исузу", null, 6);
-        transport.addCars(isyzy);
-        Trucks luidor = new Trucks("Луидор", null, 6);
-        transport.addCars(luidor);
+        Car renault = new Car("Renault", "Logan", 1.6f);
 
-        for (int i = 0; i < transport.getCars().length; i++) {
-            System.out.println(transport.getCars()[i].getBrand());
-            //printMetod(transport.getCars()[i]);
-        }
+        Car mercedes = new Car("Mercedes", "E200", 3.2f);
+
+
+        Bus lias = new Bus("Лиаз", null, 3);
+
+        Bus nifaz = new Bus("Нифаз", null, 3);
+
+        Bus kamaz = new Bus("Камаз", "А355", 4);
+
+        Bus paz  = new Bus("ПАЗ", null, 3);
+
+
+        Truck man = new Truck("Ман", null, 6);
+
+        Truck scania = new Truck("Скания", null, 6);
+
+        Truck isyzy = new Truck("Исузу", null, 6);
+
+        Truck luidor = new Truck("Луидор", null, 6);
+
 
         DriverB alex = new DriverB("Алексей Алексеевич Алексеев", true, 5, bmw);
-        System.out.println("Водитель " + alex.getFullName() + " управляете автомобилем " + alex.getCar().getBrand()+ " и будет участвовать в заезде");
+        System.out.println();
+        System.out.println(alex.getFullName());
+        System.out.println(alex.isLicense());
+        System.out.println(alex.getExperience());
+        alex.start();
+        alex.refuel();
+        alex.stop();
+        System.out.println("Водитель " + alex.getFullName() + " управляет автомобилем " + alex.getCar().getBrand()+ " и будет участвовать в заезде");
 
     }
 
-    private static void printMetod(Transport cars) {
-        cars.startMovement();
-        cars.finishMovement();
-        cars.lapTime();
-        cars.maxSpeed();
-        cars.pitStop();
-    }
+
 }
