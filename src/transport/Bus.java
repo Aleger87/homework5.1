@@ -19,6 +19,10 @@ public class Bus extends Transport implements Competing {
             return bus;
         }
 
+        public void setBus(String bus) {
+            this.bus = bus;
+        }
+
         @Override
         public String toString() {
             return "Classification{" +
@@ -26,9 +30,11 @@ public class Bus extends Transport implements Competing {
                     '}';
         }
     }
+    private Classification classification;
 
-    public Bus(String brand, String model, float engineVolume) {
+    public Bus(String brand, String model, float engineVolume, Classification classification) {
         super(brand, model, engineVolume);
+        this.classification = classification;
     }
 
     @Override
@@ -39,6 +45,15 @@ public class Bus extends Transport implements Competing {
     @Override
     public void finishMovement() {
         System.out.println("Заглушить машину");
+    }
+
+    @Override
+    public void typeTransport() {
+        if (classification == null) {
+            System.out.println("Не определено");
+        }else{
+            System.out.println("Вместимость " + classification.bus);
+        }
     }
 
     @Override
@@ -54,5 +69,13 @@ public class Bus extends Transport implements Competing {
     @Override
     public void maxSpeed() {
         System.out.println("Лучшая скорость");
+    }
+
+    public Classification getClassification() {
+        return classification;
+    }
+
+    public void setClassification(Classification classification) {
+        this.classification = classification;
     }
 }

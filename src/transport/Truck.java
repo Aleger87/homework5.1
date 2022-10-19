@@ -16,16 +16,14 @@ public class Truck extends Transport implements Competing{
             return truck;
         }
 
-        @Override
-        public String toString() {
-            return "Tonnage{" +
-                    "truck='" + truck + '\'' +
-                    '}';
-        }
-    }
 
-    public Truck(String brand, String model, float engineVolume) {
+
+    }
+    private Tonnage  tonnage;
+
+    public Truck(String brand, String model, float engineVolume, Tonnage tonnage) {
         super(brand, model, engineVolume);
+        this.tonnage = tonnage;
     }
 
     @Override
@@ -36,6 +34,15 @@ public class Truck extends Transport implements Competing{
     @Override
     public void finishMovement() {
         System.out.println("Заглушить машину");
+    }
+
+    @Override
+    public void typeTransport() {
+        if (tonnage == null) {
+            System.out.println("Не определено");
+        }else{
+            System.out.println("Грузоподъемность " +tonnage.truck);
+        }
     }
 
     @Override
@@ -51,5 +58,13 @@ public class Truck extends Transport implements Competing{
     @Override
     public void maxSpeed() {
         System.out.println("Лучшая скорость");
+    }
+
+    public Tonnage getTonnage() {
+        return tonnage;
+    }
+
+    public void setTonnage(Tonnage tonnage) {
+        this.tonnage = tonnage;
     }
 }
