@@ -1,8 +1,8 @@
 package transport;
 
-public class Buses extends Transport implements Competing {
+public class Bus extends Transport implements Competing {
 
-    public Buses(String brand, String model, float engineVolume) {
+    public Bus(String brand, String model, float engineVolume) {
         super(brand, model, engineVolume);
     }
 

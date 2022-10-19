@@ -30,10 +30,12 @@ public abstract class Driver<T extends Transport & Competing> {
     }
 
     public void start(){
+        car.startMovement();
         System.out.println(fullName + " заводит " + car.getBrand() +" " +car.getModel());
     }
 
     public void stop(){
+        car.finishMovement();
         System.out.println(fullName + " глушит " + car.getBrand() +" " +car.getModel());
     }
     public void refuel(){
@@ -45,6 +47,9 @@ public abstract class Driver<T extends Transport & Competing> {
     }
 
     public boolean isLicense() {
+        if (!license) {
+            throw new RuntimeException("Прав нет, водитель " + getFullName() + " не будет участвовать в заезде" );
+        }
         return license;
     }
 
