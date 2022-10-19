@@ -3,6 +3,9 @@ package transport;
 
 public class Car extends Transport  implements Competing{
 
+    public enum BodyType {SEDAN, HATCHBACK, COUPE, WAGON, SUV, CROSSOVER, PICKUP, VAN, MINIVAN};
+
+
     public Car(String brand, String model, float engineVolume) {
         super(brand, model, engineVolume);
     }
