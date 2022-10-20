@@ -39,6 +39,8 @@ public abstract class Transport implements Competing {
         return engineVolume;
     }
 
+    public abstract void typeTransport();
+
     @Override
     public String toString() {
         return "Transport{" +
