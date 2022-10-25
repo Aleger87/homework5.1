@@ -37,6 +37,10 @@ public class Main {
 
         Truck luidor = new Truck("Луидор", null, 6, Truck.Tonnage.N2);
 
+        service(audi, bmw, renault, mercedes,
+                lias, nifaz, kamaz, paz,
+                man, scania, isyzy, luidor);
+
 
         DriverB alex = new DriverB("Алексей Алексеевич Алексеев", true, 5, bmw);
         System.out.println();
@@ -50,6 +54,19 @@ public class Main {
 
 
 
+    }
+
+    public static void service(Transport... transports) {
+        for (Transport transprot: transports) {
+            try {
+                if (!transprot.diagnostics()) {
+                    throw  new RuntimeException ("Автомобиль" + transprot.getBrand() +  " " + transprot.getModel()+ " не прошел диагностику");
+                }
+
+            }catch (RuntimeException e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 

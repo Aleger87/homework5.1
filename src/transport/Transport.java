@@ -22,6 +22,7 @@ public abstract class Transport implements Competing {
         }
     }
 
+    public abstract boolean diagnostics();
     public abstract void startMovement();
 
     public abstract void finishMovement();

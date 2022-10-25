@@ -18,6 +18,11 @@ public class Car extends Transport  implements Competing{
     }
 
     @Override
+    public boolean diagnostics() {
+        return false;
+    }
+
+    @Override
     public void finishMovement() {
         System.out.println("Заглушить машину " + getBrand());
     }
