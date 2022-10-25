@@ -13,11 +13,6 @@ public abstract class Driver<T extends Transport & Competing> {
         }else {
             this.fullName = fullName;
         }
-        if (license==false) {
-            System.out.println("Нужно получить права");
-        }else {
-            this.license = license;
-        }
         if (experience <=3) {
             System.out.println("Недостаточно опыта");
         } else {
@@ -26,6 +21,15 @@ public abstract class Driver<T extends Transport & Competing> {
         if (car != null) {
             this.car = car;
         }
+        setLicense(license);
+
+    }
+
+    public void setLicense(boolean license) {
+        if (!license) {
+            throw new IllegalArgumentException("Необходимо получить права");
+        }
+                this.license = license;
 
     }
 

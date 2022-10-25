@@ -27,6 +27,11 @@ public class Truck extends Transport implements Competing{
     }
 
     @Override
+    public boolean diagnostics() {
+        return false;
+    }
+
+    @Override
     public void startMovement() {
         System.out.println("Завести машину");
     }
