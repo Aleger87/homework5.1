@@ -1,10 +1,13 @@
 import transport.*;
 
 import java.util.LinkedList;
+import java.util.TreeMap;
+import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
 
+        final int COUNT_MECHANIC = 2;
 
         Car audi = new Car("Audi", "A8", 3.5f, Car.BodyType.MINIVAN);
        /* audi.startMovement();
@@ -35,7 +38,7 @@ public class Main {
 
 
         Truck man = new Truck("Ман", null, 6, Truck.Tonnage.N3);
-        man.typeTransport();
+        //man.typeTransport();
         Truck scania = new Truck("Скания", null, 6, Truck.Tonnage.N1);
 
         Truck isyzy = new Truck("Исузу", null, 6, Truck.Tonnage.N3);
@@ -46,9 +49,9 @@ public class Main {
                 lias, nifaz, kamaz, paz,
                 man, scania, isyzy, luidor);*/
 
-        addCars(audi, bmw, renault, mercedes,
+        /*addCars(audi, bmw, renault, mercedes,
                 lias, nifaz, kamaz, paz,
-                man, scania, isyzy, luidor);
+                man, scania, isyzy, luidor);*/
 
         /*DriverB alex = new DriverB("Алексей Алексеевич Алексеев", true, 5, bmw);
         System.out.println();
@@ -60,9 +63,54 @@ public class Main {
         alex.stop();
         System.out.println("Водитель " + alex.getFullName() + " управляет автомобилем " + alex.getCar().getBrand()+ " и будет участвовать в заезде" );*/
 
+        Sponsor sponsor = new Sponsor("John", 5_000_000.00f);
+        Sponsor sponsor1 = new Sponsor("Adam", 5_000_000.00f);
+        Sponsor sponsor2 = new Sponsor("Bob", 5_000_000.00f);
+        Sponsor sponsor3 = new Sponsor("Putin", 5_000_000.00f);
+        sponsorList(sponsor, sponsor1, sponsor2, sponsor3);
+
+        Mechanic mechanicAnton = new Mechanic("Петрвов Антон Иванович", "ООО Ремонтник года", Mechanic.TypeCar.ALL);
+        Mechanic mechanicIvan = new Mechanic("Иванов Иван Иванович", "ООО Ремонтник года", Mechanic.TypeCar.BUS);
+        Mechanic mechanicStepan = new Mechanic("Сидоров Степан Иванович", "ООО Ремонтник года", Mechanic.TypeCar.TRAC);
+        Mechanic mechanicAlex = new Mechanic("Путин Алексей Иванович", "ООО Ремонтник года", Mechanic.TypeCar.CAR);
+        mechanicList(mechanicAlex, mechanicIvan, mechanicStepan, mechanicAnton);
+        //assignMechanec(audi, bmw, renault, mercedes);
+        mechanicAnton.addCar(lias);
+        mechanicAnton.addCar(nifaz);
+        //mechanicAnton.addCar(audi);
+        mechanicAnton.getMechanicInfo();
+        checkFixCar(mechanicAnton);
 
 
+
+        //System.out.println(mechanic..getBrand());
     }
+
+    private static void mechanicList(Mechanic... mechanics) {
+        LinkedList<Mechanic> mechanicList =new LinkedList<>();
+        for (Mechanic mechanic : mechanics) {
+            mechanicList.add(mechanic);
+        }
+    }
+
+    private static void sponsorList(Sponsor... sponsors) {
+       LinkedList<Sponsor> sponsorList =new LinkedList<>();
+        for (Sponsor sponsor : sponsors) {
+            sponsorList.add(sponsor);
+        }
+    }
+
+    private static void checkFixCar(Mechanic mechanic) {
+        for (int i = 0; i < mechanic.getCars().size(); i++) {
+            if (mechanic.fixСar((Transport) mechanic.getCars().get(i))) {
+                System.out.println("Автомобиль " + ((Transport) mechanic.getCars().get(i)).getBrand()+ " отремонтирован");
+            } else {
+                System.out.println("Автомобиль " + ((Transport) mechanic.getCars().get(i)).getBrand() + " пока в ремонте");
+            }
+
+        }
+    }
+
 
     private static void addCars(Transport... transports) {
         LinkedList<Transport> garage = new LinkedList<>();
@@ -89,10 +137,10 @@ public class Main {
     }
 
     public static void service(Transport... transports) {
-        for (Transport transprot: transports) {
+        for (Transport transport: transports) {
             try {
-                if (!transprot.diagnostics()) {
-                    throw  new RuntimeException ("Автомобиль" + transprot.getBrand() +  " " + transprot.getModel()+ " не прошел диагностику");
+                if (!transport.diagnostics()) {
+                    throw  new RuntimeException ("Автомобиль" + transport.getBrand() +  " " + transport.getModel()+ " не прошел диагностику");
                 }
 
             }catch (RuntimeException e){
