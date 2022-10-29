@@ -36,6 +36,14 @@ public class Sponsor {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Sponsor{" +
+                "name='" + name + '\'' +
+                ", amount=" + amount +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

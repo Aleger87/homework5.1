@@ -7,7 +7,6 @@ import java.util.function.Consumer;
 public class Main {
     public static void main(String[] args) {
 
-        final int COUNT_MECHANIC = 2;
 
         Car audi = new Car("Audi", "A8", 3.5f, Car.BodyType.MINIVAN);
        /* audi.startMovement();
@@ -17,6 +16,7 @@ public class Main {
         System.out.println(audi.getEngineVolume());
         System.out.println(audi.toString());
         audi.typeTransport();*/
+
 
 
 
@@ -53,8 +53,8 @@ public class Main {
                 lias, nifaz, kamaz, paz,
                 man, scania, isyzy, luidor);*/
 
-        /*DriverB alex = new DriverB("Алексей Алексеевич Алексеев", true, 5, bmw);
-        System.out.println();
+        DriverB alex = new DriverB("Алексей Алексеевич Алексеев", true, 5, bmw);
+       /* System.out.println();
         System.out.println(alex.getFullName());
         System.out.println(alex.isLicense());
         System.out.println(alex.getExperience());
@@ -63,17 +63,21 @@ public class Main {
         alex.stop();
         System.out.println("Водитель " + alex.getFullName() + " управляет автомобилем " + alex.getCar().getBrand()+ " и будет участвовать в заезде" );*/
 
+        bmw.addDriver(alex);
+
         Sponsor sponsor = new Sponsor("John", 5_000_000.00f);
         Sponsor sponsor1 = new Sponsor("Adam", 5_000_000.00f);
         Sponsor sponsor2 = new Sponsor("Bob", 5_000_000.00f);
         Sponsor sponsor3 = new Sponsor("Putin", 5_000_000.00f);
         sponsorList(sponsor, sponsor1, sponsor2, sponsor3);
+        bmw.addSponsor(sponsor, sponsor1);
 
         Mechanic mechanicAnton = new Mechanic("Петрвов Антон Иванович", "ООО Ремонтник года", Mechanic.TypeCar.ALL);
         Mechanic mechanicIvan = new Mechanic("Иванов Иван Иванович", "ООО Ремонтник года", Mechanic.TypeCar.BUS);
         Mechanic mechanicStepan = new Mechanic("Сидоров Степан Иванович", "ООО Ремонтник года", Mechanic.TypeCar.TRAC);
         Mechanic mechanicAlex = new Mechanic("Путин Алексей Иванович", "ООО Ремонтник года", Mechanic.TypeCar.CAR);
         mechanicList(mechanicAlex, mechanicIvan, mechanicStepan, mechanicAnton);
+        bmw.addMechanic(mechanicAlex, mechanicAnton, mechanicIvan);
         //assignMechanec(audi, bmw, renault, mercedes);
         mechanicAnton.addCar(lias);
         mechanicAnton.addCar(nifaz);
@@ -81,6 +85,9 @@ public class Main {
         mechanicAnton.getMechanicInfo();
         checkFixCar(mechanicAnton);
 
+
+        System.out.println("Автомобилем " + bmw.getBrand() + " управляет " + bmw.getDrivers() + " обслуживают " + bmw.getMechanics() + " спонсирует "  + bmw.getSponsors());
+        System.out.println(bmw.toString());
 
 
         //System.out.println(mechanic..getBrand());
