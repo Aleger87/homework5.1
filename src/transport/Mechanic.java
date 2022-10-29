@@ -123,6 +123,16 @@ public class Mechanic<T extends Transport> {
 
     }
 
+    @Override
+    public String toString() {
+        return "Mechanic{" +
+                "fullName='" + fullName + '\'' +
+                ", company='" + company + '\'' +
+                ", cars=" + cars +
+                ", typeCar=" + typeCar +
+                '}';
+    }
+
     public void getMechanicInfo () {
         System.out.println("--Информация по механику--" +
                             "\nМеханик " + getFullName() +
