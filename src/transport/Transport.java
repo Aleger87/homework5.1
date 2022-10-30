@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.ArrayList;
+
 public abstract class Transport implements Competing {
     private String brand;
     private String model;
@@ -21,6 +23,10 @@ public abstract class Transport implements Competing {
             this.engineVolume = engineVolume;
         }
     }
+
+    ArrayList<Driver> drivers = new ArrayList<>();
+    ArrayList<Sponsor> sponsors = new ArrayList<>();
+    ArrayList<Mechanic> mechanics = new ArrayList<>();
 
     public abstract boolean diagnostics();
     public abstract void startMovement();
