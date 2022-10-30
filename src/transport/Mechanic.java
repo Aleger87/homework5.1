@@ -14,14 +14,14 @@ public class Mechanic<T extends Transport> {
        TRAC ("грузовые автомобили"),
        ALL  ("любые автомобили");
 
-       private String type;
+       private String typeCar;
 
-       public String getType()  {
-           return type;
+       public String getTypeCar()  {
+           return typeCar;
        }
 
        TypeCar(String type) {
-           this.type = type;
+           this.typeCar = type;
        }
    }
 
@@ -137,7 +137,7 @@ public class Mechanic<T extends Transport> {
         System.out.println("--Информация по механику--" +
                             "\nМеханик " + getFullName() +
                             "\nработает в компании "+ getCompany() +
-                            "\nможет ремонтировать " +  typeCar.type +
+                            "\nможет ремонтировать " +  typeCar.typeCar +
                             "\nсписок автомобилей" + getCars());
     }
 

@@ -1,8 +1,6 @@
 import transport.*;
 
 import java.util.LinkedList;
-import java.util.TreeMap;
-import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
@@ -69,25 +67,35 @@ public class Main {
         Sponsor sponsor1 = new Sponsor("Adam", 5_000_000.00f);
         Sponsor sponsor2 = new Sponsor("Bob", 5_000_000.00f);
         Sponsor sponsor3 = new Sponsor("Putin", 5_000_000.00f);
-        sponsorList(sponsor, sponsor1, sponsor2, sponsor3);
-        bmw.addSponsor(sponsor, sponsor1);
+        //sponsorList(sponsor, sponsor1, sponsor2, sponsor3);
+       // bmw.addSponsor(sponsor, sponsor1);
 
         Mechanic mechanicAnton = new Mechanic("Петрвов Антон Иванович", "ООО Ремонтник года", Mechanic.TypeCar.ALL);
         Mechanic mechanicIvan = new Mechanic("Иванов Иван Иванович", "ООО Ремонтник года", Mechanic.TypeCar.BUS);
         Mechanic mechanicStepan = new Mechanic("Сидоров Степан Иванович", "ООО Ремонтник года", Mechanic.TypeCar.TRAC);
         Mechanic mechanicAlex = new Mechanic("Путин Алексей Иванович", "ООО Ремонтник года", Mechanic.TypeCar.CAR);
-        mechanicList(mechanicAlex, mechanicIvan, mechanicStepan, mechanicAnton);
-        bmw.addMechanic(mechanicAlex, mechanicAnton, mechanicIvan);
+        //mechanicList(mechanicAlex, mechanicIvan, mechanicStepan, mechanicAnton);
+        //bmw.addMechanic(mechanicAlex, mechanicAnton, mechanicIvan);
         //assignMechanec(audi, bmw, renault, mercedes);
-        mechanicAnton.addCar(lias);
-        mechanicAnton.addCar(nifaz);
+       // mechanicAnton.addCar(lias);
+       // mechanicAnton.addCar(nifaz);
         //mechanicAnton.addCar(audi);
-        mechanicAnton.getMechanicInfo();
-        checkFixCar(mechanicAnton);
+        //mechanicAnton.getMechanicInfo();
+        //checkFixCar(mechanicAnton);
+        bmw.addMechanic(mechanicAnton);
 
+        Sto sto = new Sto("СТО");
+        sto.addToQueue(bmw);
+        sto.addToQueue(mercedes);
+        sto.addCars(man, scania, isyzy,lias);
 
-        System.out.println("Автомобилем " + bmw.getBrand() + " управляет " + bmw.getDrivers() + " обслуживают " + bmw.getMechanics() + " спонсирует "  + bmw.getSponsors());
-        System.out.println(bmw.toString());
+        sto.technicalInspection(audi);
+        sto.technicalInspection(bmw);
+        sto.technicalInspection(scania);
+        sto.technicalInspection(lias);
+
+        /*System.out.println("Автомобилем " + bmw.getBrand() + " управляет " + bmw.getDrivers() + " обслуживают " + bmw.getMechanics() + " спонсирует "  + bmw.getSponsors());
+        System.out.println(bmw.toString());*/
 
 
         //System.out.println(mechanic..getBrand());
