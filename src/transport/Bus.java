@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 public class Bus extends Transport implements Competing {
 
     public enum Classification {
@@ -35,6 +37,26 @@ public class Bus extends Transport implements Competing {
     public Bus(String brand, String model, float engineVolume, Classification classification) {
         super(brand, model, engineVolume);
         this.classification = classification;
+    }
+
+    @Override
+    public String toString() {
+        return "Bus{" +
+                "classification=" + classification +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bus bus = (Bus) o;
+        return classification == bus.classification;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(classification);
     }
 
     @Override

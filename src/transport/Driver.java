@@ -1,7 +1,9 @@
 package transport;
 
+import java.util.Objects;
+
 public abstract class Driver<T extends Transport & Competing> {
-    private String fullName;
+   private String fullName;
     private boolean license;
     private int experience;
 
@@ -31,6 +33,21 @@ public abstract class Driver<T extends Transport & Competing> {
         }
                 this.license = license;
 
+    }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver<?> driver = (Driver<?>) o;
+        return license == driver.license && experience == driver.experience && Objects.equals(fullName, driver.fullName) && Objects.equals(car, driver.car);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, license, experience, car);
     }
 
     public void start(){
