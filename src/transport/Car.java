@@ -1,34 +1,42 @@
 package transport;
-
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.Set;
 
 public class Car extends Transport  implements Competing{
 
-    ArrayList<Driver> drivers = new ArrayList<>();
+   /* ArrayList<Driver> drivers = new ArrayList<>();
     ArrayList<Sponsor> sponsors = new ArrayList<>();
-    ArrayList<Mechanic> mechanics = new ArrayList<>();
-
+    ArrayList<Mechanic> mechanics = new ArrayList<>();*/
     public enum BodyType {SEDAN, HATCHBACK, COUPE, WAGON, SUV, CROSSOVER, PICKUP, VAN, MINIVAN;};
 
     private BodyType bodyType;
+
     public Car(String brand, String model, float engineVolume, BodyType bodyType) {
         super(brand, model, engineVolume);
         this.bodyType = bodyType;
     }
 
-    public ArrayList<Driver> getDrivers() {
-        return drivers;
-    }
 
-    public void addSponsor(Sponsor... sponsors) {
-        this.sponsors.addAll(Arrays.asList(sponsors));
+    public void addSponsor(Sponsor... sponsor) {
+        this.sponsors.addAll(Arrays.asList(sponsor));
     }
 
     public void addMechanic(Mechanic... mechanics) {
         this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return bodyType == car.bodyType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bodyType);
     }
 
     @Override
@@ -40,16 +48,20 @@ public class Car extends Transport  implements Competing{
                 '}';
     }
 
-    public ArrayList<Sponsor> getSponsors() {
+    public Set<Driver> getDrivers() {
+        return drivers;
+    }
+
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 
-    public ArrayList<Mechanic> getMechanics() {
+    public Set<Mechanic> getMechanics() {
         return mechanics;
     }
 
     public void addDriver(Driver driver) {
-        drivers.add(driver);
+        this.drivers.add(driver);
     }
 
     @Override

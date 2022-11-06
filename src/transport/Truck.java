@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 public class Truck extends Transport implements Competing{
     public enum Tonnage{
         N1 ("с полной массой до 3,5 тонн"),
@@ -24,6 +26,26 @@ public class Truck extends Transport implements Competing{
     public Truck(String brand, String model, float engineVolume, Tonnage tonnage) {
         super(brand, model, engineVolume);
         this.tonnage = tonnage;
+    }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "tonnage=" + tonnage +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Truck truck = (Truck) o;
+        return tonnage == truck.tonnage;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tonnage);
     }
 
     @Override

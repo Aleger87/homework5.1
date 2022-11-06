@@ -3,6 +3,7 @@ package transport;
 import transport.Exeption.CheckException;
 
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class Mechanic<T extends Transport> {
    /* имя и фамилия;
@@ -121,6 +122,19 @@ public class Mechanic<T extends Transport> {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return Objects.equals(fullName, mechanic.fullName) && Objects.equals(company, mechanic.company) && Objects.equals(cars, mechanic.cars) && typeCar == mechanic.typeCar;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, company, cars, typeCar);
     }
 
     @Override
